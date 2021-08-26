@@ -8,8 +8,6 @@ export const state = () => ({
 export const actions = {
   register ({ commit, state }, { email, password }) {
     firebase.auth().createUserWithEmailAndPassword(email, password);
-    console.log(email);
-    console.log(password);
   },
   login (context, payload) {
     console.log('ログイン')
