@@ -1,11 +1,42 @@
 <template>
   <div class="the-login-component">
-    <h1 class="title">ログインするかぁ？</h1>
-    <input class="form" type="text" placeholder="Email">
-    <input class="form" type="text" placeholder="Password">
-    <button class="btn">Login</button>
+    <template v-if="alreadyRegister">
+      <h1 class="title">ログインするかぁ？</h1>
+      <input v-model="email" class="form" type="text" placeholder="Email">
+      <input v-model="password" class="form" type="text" placeholder="Password">
+      <button class="btn" @click="$store.dispatch('user/login')">Login</button>
+      <button @click="alreadyRegister = !alreadyRegister">まだ登録してへん…</button>
+    </template>
+    <template v-if="!alreadyRegister">
+      <h1 class="title">会員登録する？</h1>
+      <input v-model="email" class="form" type="text" placeholder="Email">
+      {{ email }}
+      <input v-model="password" class="form" type="text" placeholder="Password">
+      {{ password }}
+      <button class="btn" @click="$store.dispatch('user/register', { email: email, password: password })">レジスター</button>
+      <button @click="alreadyRegister = !alreadyRegister">登録してるお…</button>
+    </template>
   </div>
+
 </template>
+
+<script>
+export default {
+ data () {
+   return {
+     email: '',
+     password: '',
+     alreadyRegister: false
+   }
+ },
+  computed: {
+  //  user () {
+  //    return this.$store.getters['user']
+  //  },
+ },
+}
+</script>
+
 
 <style>
 .the-login-component {
@@ -15,6 +46,8 @@
   border: solid 1px;
   border-radius: 14px;
   padding: 2rem;
+  background-color:rgb(230, 230, 230) ;
+
 }
 
 .title {
