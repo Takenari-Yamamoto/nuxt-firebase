@@ -9,7 +9,8 @@ export const actions = {
   register ({ commit, state }, { email, password }) {
     firebase.auth().createUserWithEmailAndPassword(email, password);
   },
-  login (context, payload) {
-    console.log('ログイン')
+  login ({ commit, state }, { email, password }) {
+    firebase.auth().signInWithEmailAndPassword(email, password);
+    this.$router.push('/AfterLogin');
   }
 }
