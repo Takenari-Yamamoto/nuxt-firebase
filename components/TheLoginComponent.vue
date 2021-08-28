@@ -1,18 +1,18 @@
 <template>
   <div class="the-login-component">
     <template v-if="!alreadyRegister">
-      <h1 class="title">ログインするかぁ？</h1>
+      <h1 class="title">ログインしますか？</h1>
       <input v-model="email" class="form" type="text" placeholder="Email">
       <input v-model="password" class="form" type="text" placeholder="Password">
-      <button class="btn" @click="$store.dispatch('user/setPersistenceSession', { email: email, password: password })">Login</button>
-      <button @click="alreadyRegister = !alreadyRegister">まだ登録してへん…</button>
+      <button class="btn -red" @click="$store.dispatch('user/setPersistenceSession', { email: email, password: password })">ログイン</button>
+      <button class="btn -white" @click="alreadyRegister = !alreadyRegister">メールアドレスで新規登録する</button>
     </template>
     <template v-if="alreadyRegister">
-      <h1 class="title">会員登録する？</h1>
+      <h1 class="title">会員登録しますか？</h1>
       <input v-model="email" class="form" type="text" placeholder="Email">
       <input v-model="password" class="form" type="text" placeholder="Password">
-      <button class="btn" @click="$store.dispatch('user/register', { email: email, password: password })">レジスター</button>
-      <button @click="alreadyRegister = !alreadyRegister">登録してるお…</button>
+      <button class="btn -red" @click="$store.dispatch('user/register', { email: email, password: password })">会員登録</button>
+      <button class="btn -white" @click="alreadyRegister = !alreadyRegister">メールアドレスでログインする</button>
     </template>
   </div>
 
@@ -34,17 +34,18 @@ export default {
 
 <style>
 .the-login-component {
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   border: solid 1px;
   border-radius: 14px;
   padding: 2rem;
-  background-color:rgb(230, 230, 230) ;
-
+  background-color:rgb(236, 236, 236);
+  align-items: center;
 }
 
 .title {
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -52,11 +53,12 @@ export default {
   margin-bottom :1.5rem;
   padding: 1rem;
   border-radius: 1rem;
+  width: 70%;
 }
 
-.btn {
-  padding: 1rem;
-  border-radius: 1rem;
+.form:focus {
+  outline: 0;
+  border-color:rgb(255, 174, 0);
 }
 
 </style>

@@ -3,7 +3,8 @@ import firebase from '~/plugins/firebase'
 export const state = {
   isLoggedIn: false,
   user: {},
-  email: ""
+  email: "",
+  name: ""
 }
 
 export const mutations = {
@@ -11,8 +12,9 @@ export const mutations = {
   onAuthStateChanged(state, user) {
     state.user = JSON.parse(JSON.stringify(user));
     state.email = state.user.email;
+    state.name = state.user.displayName;
     console.log("ユーザー情報は？")
-    console.log(state.user.email)
+    console.log(state.user)
   },
   // ログインしているかどうか
   onUserLoginStatusChanged(state, isLoggedIn) {
@@ -31,6 +33,9 @@ export const getters = {
   },
   email(state) {
     return state.email
+  },
+  name(state) {
+    return state.name
   }
 }
 
@@ -44,9 +49,10 @@ export const actions = {
         // firebase.auth().onAuthStateChanged(user => {
         //   context.commit('onAuthStateChanged', user);
         //   context.commit('onUserLoginStatusChanged', true)
-        //   this.$router.push('/AfterLogin');
         // });
-        })
+        }).catch((error) => {
+      console.alert(error)
+    });
   },
   setPersistenceSession(context, { email, password }) {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)

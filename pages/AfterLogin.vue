@@ -1,10 +1,11 @@
 <template>
   <div class="after-login">
     <template  v-if="isLoggedIn">
-      <p><span class="text">Firebase authentication </span>でのログインに成功したようじゃな</p>
-      <p>Email: {{ email }}</p>
+      <p class="text">Firebase authenticationでログインに成功しました！</p>
+      <p>あなたのユーザー情報はこちらです</p>
+      <InformationList class="item" :title="`Email`" :information="email"></InformationList>
       <p>{{ isLoggedIn }}</p>
-      <button @click="$store.dispatch('user/logout')">ログアウト</button>
+      <button class="btn -blue" @click="$store.dispatch('user/logout')">ログアウト</button>
     </template>
     <template v-if="!isLoggedIn">
       <p><span class="text">Firebase authentication </span>でのログインに失敗したようじゃな</p>
@@ -13,7 +14,12 @@
 </template>
 
 <script>
+import InformationList from "../components/InformationList";
+
 export default {
+  components: {
+    InformationList
+  },
   computed: {
     isLoggedIn() {
       return this.$store.state.user.isLoggedIn;
@@ -23,6 +29,9 @@ export default {
     },
     email() {
       return this.$store.state.user.email;
+    },
+    name() {
+      return this.$store.state.user.name;
     }
   },
   created (){
@@ -42,8 +51,15 @@ export default {
   align-content: center;
 }
 
+.item {
+  margin-bottom: 0.5rem;
+}
+
 .text {
-  font-size: 3rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+}
+
+.btn {
+  align-self: center;
 }
 </style>
