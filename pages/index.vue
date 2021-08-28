@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <h1 class="title">Nuxt と Firebase で遊ぼう❤️</h1>
+    <h1 class="title">Nuxt と Firebase のログイン機能</h1>
     <TheLoginComponent class="login" />
   </div>
 </template>
@@ -22,6 +22,10 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.login {
+  width: 80%;
 }
 
 .title {
