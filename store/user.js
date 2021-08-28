@@ -1,16 +1,18 @@
 import firebase from '~/plugins/firebase'
 
 export const state = {
-  user: {},
   isLoggedIn: false,
+  user: {},
+  email: ""
 }
 
 export const mutations = {
   // state の user に user 情報を格納
   onAuthStateChanged(state, user) {
     state.user = JSON.parse(JSON.stringify(user));
+    state.email = state.user.email;
     console.log("ユーザー情報は？")
-    console.log(state.user)
+    console.log(state.user.email)
   },
   // ログインしているかどうか
   onUserLoginStatusChanged(state, isLoggedIn) {
@@ -27,6 +29,9 @@ export const getters = {
   isLoggedIn(state) {
     return state.isLoggedIn;
   },
+  email(state) {
+    return state.email
+  }
 }
 
 export const actions = {
@@ -50,6 +55,7 @@ export const actions = {
           this.$router.push('/AfterLogin');
         })
   },
+  // ログイン中のユーザー情報を取得
   onAuth(context) {
     firebase.auth().onAuthStateChanged(user => {
       context.commit('onAuthStateChanged', user);
