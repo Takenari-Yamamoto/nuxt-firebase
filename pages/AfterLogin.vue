@@ -1,8 +1,16 @@
 <template>
-  <div v-if="isLoggedIn" class="after-login">
-    <p><span class="text">Firebase authentication </span>でのログインに成功したようじゃな</p>
-    <p>Email: {{ user.email }}</p>
-    <button @click="$store.dispatch('user/logout')">ログアウト</button>
+  <div class="after-login">
+    <template  v-if="isLoggedIn">
+      <p><span class="text">Firebase authentication </span>でのログインに成功したようじゃな</p>
+      <p>Email: {{ user.email }}</p>
+      <p>{{ isLoggedIn }}</p>
+      <button @click="$store.dispatch('user/logout')">ログアウト</button>
+    </template>
+    <template v-if="!isLoggedIn">
+      <p><span class="text">Firebase authentication </span>でのログインに失敗したようじゃな</p>
+      <p>{{ isLoggedIn }}</p>
+      <p>Email: {{ user.email }}</p>
+    </template>
   </div>
 </template>
 
@@ -16,6 +24,9 @@ export default {
     user() {
       return this.$store.state.user.user
     },
+  },
+  created (){
+    this.$store.dispatch('user/onAuth')
   },
 }
 </script>

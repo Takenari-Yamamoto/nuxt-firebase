@@ -4,7 +4,7 @@
       <h1 class="title">ログインするかぁ？</h1>
       <input v-model="email" class="form" type="text" placeholder="Email">
       <input v-model="password" class="form" type="text" placeholder="Password">
-      <button class="btn" @click="$store.dispatch('user/login', { email: email, password: password })">Login</button>
+      <button class="btn" @click="$store.dispatch('user/setPersistenceSession', { email: email, password: password })">Login</button>
       <button @click="alreadyRegister = !alreadyRegister">まだ登録してへん…</button>
     </template>
     <template v-if="alreadyRegister">
@@ -27,11 +27,6 @@ export default {
      alreadyRegister: false
    }
  },
- methods: {
-   login(email, password) {
-     this.$store.dispatch('user/register', { email, password })
-   }
- }
 
 }
 </script>
