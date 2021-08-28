@@ -1,13 +1,13 @@
 <template>
   <div class="the-login-component">
-    <template v-if="alreadyRegister">
+    <template v-if="!alreadyRegister">
       <h1 class="title">ログインするかぁ？</h1>
       <input v-model="email" class="form" type="text" placeholder="Email">
       <input v-model="password" class="form" type="text" placeholder="Password">
       <button class="btn" @click="$store.dispatch('user/login', { email: email, password: password })">Login</button>
       <button @click="alreadyRegister = !alreadyRegister">まだ登録してへん…</button>
     </template>
-    <template v-if="!alreadyRegister">
+    <template v-if="alreadyRegister">
       <h1 class="title">会員登録する？</h1>
       <input v-model="email" class="form" type="text" placeholder="Email">
       <input v-model="password" class="form" type="text" placeholder="Password">
@@ -22,16 +22,17 @@
 export default {
  data () {
    return {
-     email: '',
-     password: '',
+     email: 'tktkymnr1216@gmail.com',
+     password: 'tktkymnr1216@gmail.com',
      alreadyRegister: false
    }
  },
-  computed: {
-  //  user () {
-  //    return this.$store.getters['user']
-  //  },
- },
+ methods: {
+   login(email, password) {
+     this.$store.dispatch('user/register', { email, password })
+   }
+ }
+
 }
 </script>
 
