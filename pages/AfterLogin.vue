@@ -3,12 +3,16 @@
     <template  v-if="isLoggedIn">
       <p class="text">Firebase authenticationでログインに成功しました！</p>
       <p>あなたのユーザー情報はこちらです</p>
-      <InformationList class="item" :title="`Email`" :information="email"></InformationList>
+      <InformationList class="item" :title="`Email`" :information="email" />
+      <InformationList class="item" :title="`ID`" :information="id" />
+      <InformationList class="item" :title="`Name`" :information="name" />
+      <InformationList class="item" :title="`Created At`" :information="createdAt" />
       <p>{{ isLoggedIn }}</p>
       <button class="btn -blue" @click="$store.dispatch('user/logout')">ログアウト</button>
     </template>
     <template v-if="!isLoggedIn">
       <p><span class="text">Firebase authentication </span>でのログインに失敗したようじゃな</p>
+      <button class="btn -blue" @click="$store.dispatch('user/logout')">ログアウト</button>
     </template>
   </div>
 </template>
@@ -32,9 +36,16 @@ export default {
     },
     name() {
       return this.$store.state.user.name;
+    },
+    id() {
+      return this.$store.state.user.id;
+    },
+    createdAt() {
+      const date = new Date(this.$store.state.user.createdAt * 1000);
+      return date.getFullYear();
     }
   },
-  created (){
+  created() {
     this.$store.dispatch('user/onAuth')
   },
 }
