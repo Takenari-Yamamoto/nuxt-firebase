@@ -14,7 +14,8 @@
   "dependencies": {
     "core-js": "^3.15.1",
     "firebase": "^8.10.0",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "nuxt-client-init-module": "^0.3.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",

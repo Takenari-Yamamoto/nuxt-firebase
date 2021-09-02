@@ -1,19 +1,19 @@
 <template>
   <div class="after-login">
-    <template  v-if="isLoggedIn">
+    <template  v-if="$store.state.user.isLoggedIn">
       <p class="text">Firebase authenticationでログインに成功しました！</p>
       <p>あなたのユーザー情報はこちらです</p>
       <InformationList class="item" :title="`Email`" :information="email" />
       <InformationList class="item" :title="`ID`" :information="id" />
       <InformationList class="item" :title="`Name`" :information="name" />
-      <InformationList class="item" :title="`Created At`" :information="createdAt" />
-      <p>{{ isLoggedIn }}</p>
+      <InformationList class="item" :title="`Created At`" :information="registerdDate" />
       <button class="btn -blue" @click="$store.dispatch('user/logout')">ログアウト</button>
     </template>
-    <template v-if="!isLoggedIn">
-      <p><span class="text">Firebase authentication </span>でのログインに失敗したようじゃな</p>
+    <!-- <template v-if="!$store.state.user.isLoggedIn"> -->
+      <!-- <p>ログインしないと見れないよ！</p>
+      <button class="btn fan" @click="uzai">┐(´∀｀)┌</button>
       <button class="btn -blue" @click="$store.dispatch('user/logout')">ログアウト</button>
-    </template>
+    </template> -->
   </div>
 </template>
 
@@ -25,9 +25,6 @@ export default {
     InformationList
   },
   computed: {
-    isLoggedIn() {
-      return this.$store.state.user.isLoggedIn;
-    },
     user() {
       return this.$store.state.user.user
     },
@@ -35,19 +32,21 @@ export default {
       return this.$store.state.user.email;
     },
     name() {
-      return this.$store.state.user.name;
+      return this.$store.state.user.name ? this.$store.state.user.name : "設定されてないお";
     },
     id() {
       return this.$store.state.user.id;
     },
-    createdAt() {
-      const date = new Date(this.$store.state.user.createdAt * 1000);
-      return date.getFullYear();
+    registerdDate() {
+      const dateTime = new Date(this.$store.state.user.registeredDate * 1000);
+      return dateTime.toLocaleDateString()
     }
   },
-  created() {
-    this.$store.dispatch('user/onAuth')
-  },
+  methods: {
+    uzai() {
+      window.alert('ログインしろよ')
+    },
+  }
 }
 </script>
 
@@ -70,7 +69,35 @@ export default {
   font-size: 2rem;
 }
 
+.fan {
+  font-size: 10rem;
+  transition: 1s;
+}
+
+.fan:hover {
+  color: rgb(163, 8, 235);
+  background-color: yellowgreen;
+}
+
 .btn {
   align-self: center;
 }
+
+/* @keyframes myframe {
+  from {
+    width: 50px;
+    height: 0px;
+    background: red;
+  }
+  50% {
+    width: 50px;
+    height: 50px;
+    background: blue;
+  }
+  to {
+    width: 100px;
+    height: 50px;
+    background: green;
+  }
+} */
 </style>

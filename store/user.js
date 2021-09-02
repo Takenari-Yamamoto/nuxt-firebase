@@ -1,88 +1,65 @@
 import firebase from '~/plugins/firebase'
 
 export const state = {
-  isLoggedIn: false,
   user: {},
   email: '',
-  name: 'aaa',
+  name: '',
   id: '',
-  createdAt: '',
+  registeredDate: '',
+  isLoggedIn: false,
 }
 
 export const mutations = {
   // state の user に user 情報を格納
-  onAuthStateChanged(state, user) {
+  saveUserInformation(state, user) {
     state.user = JSON.parse(JSON.stringify(user))
     state.email = state.user.email
     state.name = state.user.displayName
     state.id = state.user.uid
-    state.createdAt = state.user.createdAt
-    // console.log("ユーザー情報は？")
-    // console.log(state.user)
+    state.registeredDate = state.user.createdAt
   },
-  // ログインしているかどうか
-  onUserLoginStatusChanged(state, isLoggedIn) {
-    state.isLoggedIn = isLoggedIn
-    // console.log("ログインしていますか？")
-    // console.log(state.isLoggedIn)
-  },
-}
-
-export const getters = {
-  // ログイン状態
-  isLoggedIn(state) {
-    return state.isLoggedIn
-  },
-  // ユーザ情報を配列に保存
-  user(state) {
-    return state.user
-  },
-  email(state) {
-    return state.email
-  },
-  name(state) {
-    return state.name
-  },
-  id(state) {
-    return state.uid
-  },
-  createdAt(state) {
-    return new Date(state.createdAt * 1000).toString()
+  changeAuthState(state) {
+    state.isLoggedIn = true
+    console.log(state.isLoggedIn)
   },
 }
 
 export const actions = {
   register(context, { email, password }) {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        this.$router.push('/AfterLogin')
+      })
+      .catch(() => {
+        window.alert('会員登録に失敗しました')
+      })
   },
   login(context, { email, password }) {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // firebase.auth().onAuthStateChanged(user => {
-        //   context.commit('onAuthStateChanged', user);
-        //   context.commit('onUserLoginStatusChanged', true)
-        // });
-      })
-      .catch((error) => {
-        console.alert(error)
-      })
-  },
-  setPersistenceSession(context, { email, password }) {
-    firebase
-      .auth()
-      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-      .then(() => {
-        context.dispatch('login', { email, password })
+        firebase.auth().onAuthStateChanged((user) => {
+          context.commit('saveUserInformation', user)
+          context.commit('changeAuthState')
+        })
         this.$router.push('/AfterLogin')
       })
+      .catch(() => {
+        window.alert('ログインに失敗しました')
+      })
+  },
+  // 果たして必要なのか
+  setPersistenceSession(context, { email, password }) {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
   },
   // ログイン中のユーザー情報を取得
-  onAuth(context) {
+  getAuthenticatedUserInformation(context) {
     firebase.auth().onAuthStateChanged((user) => {
-      context.commit('onAuthStateChanged', user)
-      context.commit('onUserLoginStatusChanged', true)
+      context.commit('saveUserInformation', user)
+      context.commit('changeAuthState')
     })
   },
   logout() {
