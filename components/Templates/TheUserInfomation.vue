@@ -1,57 +1,56 @@
 <template>
   <div class="after-login">
-    <template  v-if="$store.state.user.isLoggedIn">
+    <template v-if="$store.state.user.isLoggedIn">
       <p class="text">Firebase authenticationでログインに成功しました！</p>
       <p>あなたのユーザー情報はこちらです</p>
       <InformationList class="item" :title="`Email`" :information="email" />
       <InformationList class="item" :title="`ID`" :information="id" />
       <InformationList class="item" :title="`Name`" :information="name" />
-      <InformationList class="item" :title="`Created At`" :information="registerdDate" />
-      <button class="btn -blue" @click="$store.dispatch('user/logout')">ログアウト</button>
+      <InformationList
+        class="item"
+        :title="`Created At`"
+        :information="registerdDate"
+      />
     </template>
-    <!-- <template v-if="!$store.state.user.isLoggedIn"> -->
-      <!-- <p>ログインしないと見れないよ！</p>
-      <button class="btn fan" @click="uzai">┐(´∀｀)┌</button>
-      <button class="btn -blue" @click="$store.dispatch('user/logout')">ログアウト</button>
-    </template> -->
   </div>
 </template>
 
 <script>
-import InformationList from "../components/InformationList";
+import InformationList from '../Atoms/InformationList'
 
 export default {
   components: {
-    InformationList
+    InformationList,
   },
   computed: {
     user() {
       return this.$store.state.user.user
     },
     email() {
-      return this.$store.state.user.email;
+      return this.$store.state.user.email
     },
     name() {
-      return this.$store.state.user.name ? this.$store.state.user.name : "設定されてないお";
+      return this.$store.state.user.name
+        ? this.$store.state.user.name
+        : '設定されてないお'
     },
     id() {
-      return this.$store.state.user.id;
+      return this.$store.state.user.id
     },
     registerdDate() {
-      const dateTime = new Date(this.$store.state.user.registeredDate * 1000);
+      const dateTime = new Date(this.$store.state.user.registeredDate * 1000)
       return dateTime.toLocaleDateString()
-    }
+    },
   },
   methods: {
     uzai() {
       window.alert('ログインしろよ')
     },
-  }
+  },
 }
 </script>
 
 <style scoped>
-
 .after-login {
   padding: 0 10rem;
   display: flex;

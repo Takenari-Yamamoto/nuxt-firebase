@@ -1,9 +1,7 @@
 <template>
-  <div class="index">
+  <div>
     <TheAppHeader></TheAppHeader>
-    <h1>Travel List</h1>
-    <h2>みんなの投稿一覧</h2>
-    <NuxtLink to="/UserLoginPage">投稿するにはログインしてください</NuxtLink>
+    <h1>post page desu</h1>
   </div>
 </template>
 

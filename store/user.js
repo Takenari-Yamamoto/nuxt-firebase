@@ -30,7 +30,7 @@ export const actions = {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.$router.push('/AfterLogin')
+        this.$router.push('/Mypage')
       })
       .catch(() => {
         window.alert('会員登録に失敗しました')
@@ -45,7 +45,7 @@ export const actions = {
           context.commit('saveUserInformation', user)
           context.commit('changeAuthState')
         })
-        this.$router.push('/AfterLogin')
+        this.$router.push('/Mypage')
       })
       .catch(() => {
         window.alert('ログインに失敗しました')
