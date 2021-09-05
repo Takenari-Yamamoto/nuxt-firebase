@@ -3,18 +3,29 @@
     <TheAppHeader></TheAppHeader>
     <div class="main">
       <h1>post page desu</h1>
+      {{ uid }}
       <label for="title">Title</label>
       <input v-model="title" type="text" name="title" />
       <label for="title">Content</label>
       <textarea v-model="content" class="mb-2" type="text" name="content" />
-      <button @click="post(title, content)" class="btn -blue">投稿</button>
+      <button
+        @click="
+          $store.dispatch('travel/post', {
+            title: title,
+            content: content,
+            uid: uid,
+          })
+        "
+        class="btn -blue"
+      >
+        投稿
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import TheAppHeader from '../components/Organisms/TheAppHeeader'
-import firebase from '~/plugins/firebase'
+import TheAppHeader from '@/components/Organisms/TheAppHeeader'
 
 export default {
   components: {
@@ -26,12 +37,9 @@ export default {
       content: '',
     }
   },
-  methods: {
-    post(title, content) {
-      firebase.database().ref('post').set({
-        travel_title: this.title,
-        travel_content: this.content,
-      })
+  computed: {
+    uid() {
+      return this.$store.state.user.id
     },
   },
 }

@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import TheAppHeader from '../components/Organisms/TheAppHeeader'
+import TheAppHeader from '@/components/Organisms/TheAppHeeader'
 
 export default {
   components: {
@@ -83,6 +83,7 @@ export default {
 .login-page {
   display: flex;
   justify-content: center;
+  padding: 0 1.6rem;
 }
 
 .the-login-component {

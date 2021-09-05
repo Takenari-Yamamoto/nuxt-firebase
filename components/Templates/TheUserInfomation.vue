@@ -1,8 +1,7 @@
 <template>
   <div class="after-login">
     <template v-if="$store.state.user.isLoggedIn">
-      <p class="text">Firebase authenticationでログインに成功しました！</p>
-      <p>あなたのユーザー情報はこちらです</p>
+      <h2>あなたのユーザー情報</h2>
       <InformationList class="item" :title="`Email`" :information="email" />
       <InformationList class="item" :title="`ID`" :information="id" />
       <InformationList class="item" :title="`Name`" :information="name" />

@@ -1,17 +1,22 @@
-// import firebase from '~/plugins/firebase'
+import firebase from '~/plugins/firebase'
 
-export const store = {
-  // title: '',
-  // content: '',
+export const state = {
+  title: '',
+  content: '',
 }
 
-// export const mutations = {}
+export const mutations = {
+  // setPost(state, { title, content }) {
+  //   ;(state.title = title), (state.content = content)
+  // },
+}
 
-// export const actions = {
-//   post(context, { title, content }) {
-//     firebase.database().ref('post').set({
-//       travel_title: title,
-//       travel_content: content,
-//     })
-//   },
-// }
+export const actions = {
+  post({ context, state }, { title, content, uid }) {
+    const Ref = firebase.database().ref(uid + '/post')
+    Ref.push({
+      travel_title: title,
+      travel_content: content,
+    })
+  },
+}
