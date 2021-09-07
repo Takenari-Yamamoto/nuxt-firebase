@@ -31,6 +31,11 @@ export default {
       status: true,
     }
   },
+  computed: {
+    uid() {
+      return this.$store.state.user.id
+    },
+  },
 }
 </script>
 

@@ -4,21 +4,42 @@
     <div class="toppage">
       <h1>Travel List</h1>
       <h2>みんなの投稿一覧</h2>
-      <div class="item">
-        <p class="title">Title</p>
-        <p class="content">Content content content</p>
+      <div v-for="post in posts" :key="post.key" class="item">
+        <p class="uid">User id: {{ post.uid }}</p>
+        <p class="title">Title: {{ post.title }}</p>
+        <p class="content">Content: {{ post.content }}</p>
       </div>
-      <NuxtLink to="/UserLoginPage">投稿するにはログインしてください</NuxtLink>
+      <NuxtLink to="/user/UserLoginPage"
+        >投稿するにはログインしてください</NuxtLink
+      >
     </div>
   </div>
 </template>
 
 <script>
 import TheAppHeader from '../components/Organisms/TheAppHeeader'
+import firebase from '~/plugins/firebase'
 
 export default {
   components: {
     TheAppHeader,
+  },
+  data() {
+    return {
+      posts: [],
+    }
+  },
+  created() {
+    firebase
+      .database()
+      .ref('/posts')
+      .once('value')
+      .then((result) => {
+        if (result.val()) {
+          this.posts = result.val()
+          console.dir(this.posts)
+        }
+      })
   },
 }
 </script>
@@ -29,6 +50,7 @@ export default {
 }
 
 .item {
+  text-align: left;
   background-color: aliceblue;
   padding: 2rem;
   font-weight: bold;

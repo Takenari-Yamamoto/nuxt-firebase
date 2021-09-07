@@ -100,7 +100,6 @@ export default {
 
 .title {
   font-size: 1rem;
-  text-align: center;
 }
 
 .form {
