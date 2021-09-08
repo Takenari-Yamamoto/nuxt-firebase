@@ -45,7 +45,7 @@ export const actions = {
           context.commit('saveUserInformation', user)
           context.commit('changeAuthState')
         })
-        this.$router.push('/mypage')
+        this.$router.push('/user/mypage')
       })
       .catch(() => {
         window.alert('ログインに失敗しました')
