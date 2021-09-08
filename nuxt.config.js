@@ -18,7 +18,6 @@ export default {
   css: [
     '@/assets/css/reset.css',
     '@/assets/css/app.scss',
-    // @/aassets/css/components/atoms/btn-component.scss
   ],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],

@@ -5,6 +5,7 @@
       <p class="uid">User id: {{ post.uid }}</p>
       <p class="title">Title: {{ post.title }}</p>
       <p class="content">Content: {{ post.content }}</p>
+      <NuxtLink t:to="`/items/${post.key}`">詳細へ</NuxtLink>
       <hr />
     </div>
   </div>

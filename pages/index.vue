@@ -4,10 +4,11 @@
     <div class="toppage">
       <h1>Travel List</h1>
       <h2>みんなの投稿一覧</h2>
-      <div v-for="post in posts" :key="post.key" class="item">
+      <div v-for="(id, post) in posts" :key="post.key" class="item">
         <p class="uid">User id: {{ post.uid }}</p>
         <p class="title">Title: {{ post.title }}</p>
         <p class="content">Content: {{ post.content }}</p>
+        <NuxtLink to="`/travel/${post.key}`">詳細へ</NuxtLink>
       </div>
       <NuxtLink to="/user/UserLoginPage"
         >投稿するにはログインしてください</NuxtLink
