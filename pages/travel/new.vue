@@ -9,6 +9,7 @@
       <label for="title">Content</label>
       <textarea v-model="content" class="mb-2" type="text" name="content" />
       <button
+        class="btn -blue"
         @click="
           $store.dispatch('travel/post', {
             title: title,
@@ -16,7 +17,6 @@
             uid: uid,
           })
         "
-        class="btn -blue"
       >
         投稿
       </button>

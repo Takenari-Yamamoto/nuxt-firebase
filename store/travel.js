@@ -16,14 +16,18 @@ export const mutations = {
 
 export const actions = {
   // 投稿する
-  post({ context, state }, { title, content, uid }) {
-    const Ref = firebase.database().ref('/posts')
-    Ref.push({
+  post({ context, state }, { title, content, uid, postId }) {
+    const ref = firebase.database().ref('/posts')
+    const newPostRef = ref.push()
+    const id = newPostRef.key
+    ref.push({
       content,
       title,
       uid,
+      postId: id,
     })
   },
+  // TODO: あとで書き換える想定
   // 全ての投稿を取得
   // getPersonalPosts({ context, state }, uid) {
   //   const database = firebase.database()
