@@ -17,15 +17,23 @@ export const mutations = {
 export const actions = {
   // 投稿する
   post({ context, state }, { title, content, uid, postId }) {
-    const ref = firebase.database().ref('/posts')
-    const newPostRef = ref.push()
-    const id = newPostRef.key
-    ref.push({
-      content,
-      title,
-      uid,
-      postId: id,
-    })
+    const id = firebase.database().ref().child('posts').push().key
+    firebase
+      .database()
+      .ref('posts/' + id)
+      .set({
+        content,
+        title,
+        uid,
+        postId: id,
+      })
+
+    // ref.push({
+    //   content,
+    //   title,
+    //   uid,
+    //   postId: id,
+    // })
   },
   // TODO: あとで書き換える想定
   // 全ての投稿を取得

@@ -31,17 +31,20 @@ export default {
     }
   },
   created() {
-    firebase
-      .database()
-      .ref('/posts')
-      .once('value')
-      .then((result) => {
-        if (result.val()) {
-          this.posts = result.val()
-        }
-      })
+    this.getAllTravelPosts()
   },
   methods: {
+    getAllTravelPosts() {
+      firebase
+        .database()
+        .ref('/posts')
+        .once('value')
+        .then((result) => {
+          if (result.val()) {
+            this.posts = result.val()
+          }
+        })
+    },
     moveToDetail(id) {
       this.$router.push('/travel/' + id)
     },
