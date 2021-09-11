@@ -37,18 +37,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.main {
-  display: flex;
-  flex-direction: column;
-}
-
-.mb-2 {
-  margin-bottom: 2rem;
-}
-
-.btn {
-  width: 20%;
-}
-</style>

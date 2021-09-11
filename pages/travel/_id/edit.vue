@@ -22,21 +22,21 @@
 </template>
 
 <script>
-import firebase from '~/plugins/firebase'
+import firebase from '~/plugins/firebase';
 
 export default {
   data() {
     return {
       post: [],
-    }
+    };
   },
   computed: {
     uid() {
-      return this.$store.state.user.id
+      return this.$store.state.user.id;
     },
   },
   created() {
-    this.getTravelDetail()
+    this.getTravelDetail();
   },
   methods: {
     getTravelDetail() {
@@ -46,26 +46,10 @@ export default {
         .once('value')
         .then((result) => {
           if (result.val()) {
-            this.post = result.val()
-            console.dir(this.post)
+            this.post = result.val();
           }
-        })
+        });
     },
   },
-}
+};
 </script>
-
-<style scoped>
-.main {
-  display: flex;
-  flex-direction: column;
-}
-
-.mb-2 {
-  margin-bottom: 2rem;
-}
-
-.btn {
-  width: 20%;
-}
-</style>

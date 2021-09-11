@@ -1,6 +1,6 @@
 <template>
   <header class="the-app-header">
-    <p class="logo">✈️ Travel List ✈️</p>
+    <NuxtLink to="/" class="logo">✈️ Travel List ✈️</NuxtLink>
     <template v-if="$store.state.user.isLoggedIn">
       <NuxtLink to="/" class="item">Top</NuxtLink>
       <NuxtLink to="/travel/new" class="item">Post</NuxtLink>
@@ -12,5 +12,5 @@
 <script>
 export default {
   computed: {},
-}
+};
 </script>

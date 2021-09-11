@@ -1,22 +1,22 @@
 <template>
   <div>
     <TheAppHeader />
-    <Nuxt class="layout" />
+    <Nuxt class="layout-page" />
   </div>
 </template>
 
 <script>
-import TheAppHeader from '@/components/Organisms/TheAppHeeader'
+import TheAppHeader from '@/components/Organisms/TheAppHeeader';
 
 export default {
   components: {
     TheAppHeader,
   },
-}
+};
 </script>
 
-<style scoped>
-.layout {
+<style>
+.layout-page {
   padding: 0 1.6rem;
 }
 </style>

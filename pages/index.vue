@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index-page">
     <h1 class="title">Travel List</h1>
     <div class="list">
       <TravelPost
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import firebase from '~/plugins/firebase'
-import TravelPost from '@/components/Atoms/TravelPost'
+import firebase from '~/plugins/firebase';
+import TravelPost from '@/components/Atoms/TravelPost';
 
 export default {
   components: {
@@ -29,10 +29,10 @@ export default {
   data() {
     return {
       posts: [],
-    }
+    };
   },
   created() {
-    this.getAllTravelPosts()
+    this.getAllTravelPosts();
   },
   methods: {
     getAllTravelPosts() {
@@ -42,10 +42,10 @@ export default {
         .once('value')
         .then((result) => {
           if (result.val()) {
-            this.posts = result.val()
+            this.posts = result.val();
           }
-        })
+        });
     },
   },
-}
+};
 </script>
