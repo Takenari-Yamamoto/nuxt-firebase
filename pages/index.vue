@@ -1,12 +1,16 @@
 <template>
   <div class="index">
-    <h1>Travel List</h1>
-    <TravelPost class="post" />
-    <div v-for="post in posts" :key="post.postId" class="item">
-      <p class="uid">User id: {{ post.uid }}</p>
-      <p class="title">Title: {{ post.title }}</p>
-      <p class="content">Content: {{ post.content }}</p>
-      <button @click="moveToDetail(post.postId)">詳細へ</button>
+    <h1 class="title">Travel List</h1>
+    <div class="list">
+      <TravelPost
+        v-for="post in posts"
+        :key="post.postId"
+        :title="post.title"
+        :content="post.content"
+        :uid="post.uid"
+        :post-id="post.postId"
+        class="post"
+      />
     </div>
     <NuxtLink to="/user/UserLoginPage"
       >投稿するにはログインしてください</NuxtLink
@@ -41,9 +45,6 @@ export default {
             this.posts = result.val()
           }
         })
-    },
-    moveToDetail(id) {
-      this.$router.push('/travel/' + id)
     },
   },
 }

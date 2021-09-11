@@ -6,7 +6,7 @@
 /* tools */
 
 /* generic */
-// @import 'generic/reset';
+@import 'generics/reset';
 
 /* elements */
 
@@ -15,9 +15,11 @@
 
 /* pages */
 @import 'pages/travel-detail';
+@import 'pages/index-page';
 
 /* components > atoms */
 @import 'assets/css/components/atoms/btn-component';
+@import 'assets/css/components/atoms/travel-post';
 
 /* components > organisms */
 @import 'assets/css/components/organisms/the-app-header';

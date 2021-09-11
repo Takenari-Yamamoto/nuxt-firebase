@@ -1,0 +1,32 @@
+.travel-post {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  cursor: pointer;
+
+  > .image {
+    min-width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  > .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  > .text {
+    font-size: 0.8rem;
+    color: $grey-boat-anchor;
+    margin-bottom: 0.5rem;
+  }
+
+  > .uid {
+    font-size: 0.7rem;
+    color: $grey-boat-anchor;
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,9 +1,10 @@
 .the-app-header {
   background-color: white;
   display: flex;
+  align-items: center;
   padding: 1.5rem;
   border-bottom: thin solid $grey-cerebral-grey;
-  align-items: center;
+  margin-bottom: 1rem;
 
   > .logo {
     font-weight: bold;
@@ -13,8 +14,8 @@
 
   > .item {
     margin-left: 1rem;
+    font-weight: bold;
     color: rgb(85, 85, 85);
     text-decoration: none;
-    font-weight: bold;
   }
 }

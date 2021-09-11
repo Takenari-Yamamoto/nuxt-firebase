@@ -57,7 +57,6 @@ export default {
 
 <style scoped>
 .main {
-  padding: 0 1.6rem;
   display: flex;
   flex-direction: column;
 }

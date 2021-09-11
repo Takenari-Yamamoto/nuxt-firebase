@@ -1,0 +1,14 @@
+.index {
+  > .title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  > .list {
+    display: flex;
+  }
+
+  .post {
+    width: 20%;
+  }
+}

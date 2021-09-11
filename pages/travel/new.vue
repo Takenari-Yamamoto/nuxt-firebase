@@ -2,7 +2,6 @@
   <div class="post-page">
     <div class="main">
       <h1>post page desu</h1>
-      {{ uid }}
       <label for="title">Title</label>
       <input v-model="title" type="text" name="title" />
       <label for="title">Content</label>
