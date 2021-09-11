@@ -12,9 +12,6 @@
         class="post"
       />
     </div>
-    <NuxtLink to="/user/UserLoginPage"
-      >投稿するにはログインしてください</NuxtLink
-    >
   </div>
 </template>
 
