@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheAppHeader />
-    <Nuxt />
+    <Nuxt class="layout" />
   </div>
 </template>
 
@@ -14,3 +14,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.layout {
+  padding: 0 1.6rem;
+}
+</style>
