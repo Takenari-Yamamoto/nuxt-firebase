@@ -1,19 +1,19 @@
 .information-list {
-    display: flex;
-    width: 100%;
-    border: thin solid #000;
-  }
+  display: flex;
+  width: 100%;
+  border: thin solid #000;
+}
 
-  .title {
-    background-color: rgb(192, 192, 192);
-    width: 30%;
-    margin: 0;
-    padding: 1rem;
-  }
+.title {
+  width: 30%;
+  padding: 1rem;
+  margin: 0;
+  background-color: rgb(192, 192, 192);
+}
 
-  .information {
-    background-color: white;
-    flex:1;
-    margin: 0;
-    padding: 1rem;
-  }
+.information {
+  flex: 1;
+  padding: 1rem;
+  margin: 0;
+  background-color: white;
+}
