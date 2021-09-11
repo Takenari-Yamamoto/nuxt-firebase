@@ -1,6 +1,5 @@
 <template>
   <div>
-    <TheAppHeader></TheAppHeader>
     <div class="login-page">
       <div class="the-login-component">
         <template v-if="!alreadyRegister">
@@ -63,12 +62,7 @@
 </template>
 
 <script>
-import TheAppHeader from '@/components/Organisms/TheAppHeeader'
-
 export default {
-  components: {
-    TheAppHeader,
-  },
   data() {
     return {
       email: 'tktkymnr1216@gmail.com',

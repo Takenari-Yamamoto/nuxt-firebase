@@ -2,8 +2,19 @@
   background-color: white;
   display: flex;
   padding: 1.5rem;
-}
+  border-bottom: thin solid $grey-cerebral-grey;
+  align-items: center;
 
-.item {
-  margin-right: 1rem;
+  > .logo {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+  }
+
+  > .item {
+    margin-left: 1rem;
+    color: rgb(85, 85, 85);
+    text-decoration: none;
+    font-weight: bold;
+  }
 }

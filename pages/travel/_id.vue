@@ -1,6 +1,5 @@
 <template>
   <div>
-    <TheAppHeader></TheAppHeader>
     <NuxtChild />
     <div v-if="!$route.path.match(/edit/)">
       <div class="travel-detail">
@@ -16,13 +15,10 @@
 </template>
 
 <script>
-import TheAppHeader from '@/components/Organisms/TheAppHeeader'
 import firebase from '~/plugins/firebase'
 
 export default {
-  components: {
-    TheAppHeader,
-  },
+  components: {},
   data() {
     return {
       post: [],

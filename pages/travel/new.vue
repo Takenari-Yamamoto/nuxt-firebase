@@ -1,6 +1,5 @@
 <template>
   <div class="post-page">
-    <TheAppHeader></TheAppHeader>
     <div class="main">
       <h1>post page desu</h1>
       {{ uid }}
@@ -25,12 +24,7 @@
 </template>
 
 <script>
-import TheAppHeader from '@/components/Organisms/TheAppHeeader'
-
 export default {
-  components: {
-    TheAppHeader,
-  },
   data() {
     return {
       title: '',

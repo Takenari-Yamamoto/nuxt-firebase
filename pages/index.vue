@@ -1,9 +1,7 @@
 <template>
   <div class="index">
-    <TheAppHeader></TheAppHeader>
     <div class="toppage">
       <h1>Travel List</h1>
-      <h2>みんなの投稿一覧</h2>
       <div v-for="post in posts" :key="post.postId" class="item">
         <p class="uid">User id: {{ post.uid }}</p>
         <p class="title">Title: {{ post.title }}</p>
@@ -18,13 +16,9 @@
 </template>
 
 <script>
-import TheAppHeader from '../components/Organisms/TheAppHeeader'
 import firebase from '~/plugins/firebase'
 
 export default {
-  components: {
-    TheAppHeader,
-  },
   data() {
     return {
       posts: [],
