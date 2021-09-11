@@ -27,32 +27,15 @@ export const actions = {
         uid,
         postId: id,
       })
-
-    // ref.push({
-    //   content,
-    //   title,
-    //   uid,
-    //   postId: id,
-    // })
   },
-  // TODO: あとで書き換える想定
-  // 全ての投稿を取得
-  // getPersonalPosts({ context, state }, uid) {
-  //   const database = firebase.database()
-  //   database.ref(uid + '/post').on('value', (data) => {
-  //     if (data) {
-  //       const rootList = data.val()
-  //       const key = data.key
-  //       let list = []
-  //       // データオブジェクトを配列に変更する
-  //       if (rootList != null) {
-  //         Object.keys(rootList).forEach((val, key) => {
-  //           rootList[val].id = val
-  //           list.push(rootList[val])
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
-  getAllPosts() {},
+  // 投稿詳細を編集する
+  editTravelDetail({ context, state }, { title, content, postId }) {
+    firebase
+      .database()
+      .ref('posts/' + postId)
+      .update({
+        content,
+        title,
+      })
+  },
 }
