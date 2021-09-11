@@ -68,41 +68,7 @@ export default {
       email: 'tktkymnr1216@gmail.com',
       password: 'tktkymnr1216@gmail.com',
       alreadyRegister: false,
-    }
+    };
   },
-}
+};
 </script>
-
-<style>
-.login-page {
-  display: flex;
-}
-
-.the-login-component {
-  margin-top: 5rem;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  border: solid 1px;
-  border-radius: 14px;
-  padding: 2rem;
-  background-color: rgb(236, 236, 236);
-  align-items: center;
-}
-
-.title {
-  font-size: 1rem;
-}
-
-.form {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  width: 70%;
-}
-
-.form:focus {
-  outline: 0;
-  border-color: rgb(255, 174, 0);
-}
-</style>

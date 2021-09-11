@@ -1,15 +1,18 @@
 {
-  "plugin": [
-      "stylelint-scss"
-  ],
   "extends": [
     "stylelint-config-recommended-scss",
-    "stylelint-prettier/recommended",
-    "stylelint-config-recess-order"
+    "stylelint-config-recess-order",
+    "stylelint-rscss/config",
+    "stylelint-config-prettier"
   ],
+  "plugins": ["stylelint-scss"],
   "rules": {
-    "at-rule-no-unknown":[true,{
-            "ignoreAtRules":["function","if","for","each","include","mixin","content"]
-        }]
+    "max-nesting-depth": [
+      1,
+      {
+        "ignore": ["pseudo-classes"],
+        "ignoreAtRules": ["include"]
+      }
+    ]
   }
 }

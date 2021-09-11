@@ -13,11 +13,14 @@
   },
   "dependencies": {
     "core-js": "^3.15.1",
+    "eslint-config-airbnb": "^18.2.1",
     "firebase": "^8.10.0",
+    "lint-staged": "^11.1.2",
     "node-sass": "4.14",
     "nuxt": "^2.15.7",
     "nuxt-client-init-module": "^0.3.0",
-    "stylelint-config-recess-order": "^2.5.0"
+    "stylelint-config-recess-order": "^2.5.0",
+    "stylelint-rscss": "^0.4.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
@@ -27,9 +30,11 @@
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.12.1",
+    "eslint-plugin-vue": "^7.17.0",
     "fibers": "^5.0.0",
+    "husky": "^7.0.2",
     "prettier": "^2.4.0",
+    "pretty-quick": "^3.1.1",
     "sass": "^1.39.0",
     "sass-loader": "10",
     "stylelint": "^13.13.1",
@@ -39,5 +44,26 @@
     "stylelint-config-standard": "^22.0.0",
     "stylelint-prettier": "^1.2.0",
     "stylelint-scss": "^3.20.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "resources/js/**/*.{js,vue}": [
+      "pretty-quick --staged",
+      "eslint --fix",
+      "git add"
+    ],
+    "resources/scss/frontend/**/*.{css,scss}": [
+      "pretty-quick --staged",
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{png,jpeg,jpg,gif,svg}": [
+      "imagemin-lint-staged",
+      "git add"
+    ]
   }
 }

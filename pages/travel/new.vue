@@ -28,14 +28,14 @@ export default {
     return {
       title: '',
       content: '',
-    }
+    };
   },
   computed: {
     uid() {
-      return this.$store.state.user.id
+      return this.$store.state.user.id;
     },
   },
-}
+};
 </script>
 
 <style scoped>

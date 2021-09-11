@@ -12,18 +12,18 @@
 </template>
 
 <script>
-import firebase from '~/plugins/firebase'
+import firebase from '~/plugins/firebase';
 
 export default {
   data() {
     return {
       posts: [],
       myPosts: [],
-    }
+    };
   },
   computed: {
     uid() {
-      return this.$store.state.user.id
+      return this.$store.state.user.id;
     },
   },
   created() {
@@ -33,12 +33,10 @@ export default {
       .once('value')
       .then((result) => {
         if (result.val()) {
-          this.posts = result.val()
-          console.log(this.posts)
-          this.myPosts = this.posts.filter((value) => value.uid === this.uid)
-          console.log(this.myPosts)
+          this.posts = result.val();
+          this.myPosts = this.posts.filter((value) => value.uid === this.uid);
         }
-      })
+      });
   },
-}
+};
 </script>
