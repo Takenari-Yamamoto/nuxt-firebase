@@ -1,0 +1,19 @@
+.travel-detail {
+  > .id {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: $grey-boat-anchor;
+  }
+
+  > .uid {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: $grey-boat-anchor;
+  }
+
+  > .title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+}
