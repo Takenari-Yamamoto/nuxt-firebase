@@ -15,36 +15,14 @@
 </template>
 
 <script>
-import firebase from '~/plugins/firebase'
-
 export default {
-  components: {},
-  data() {
-    return {
-      post: [],
-    }
-  },
   computed: {
-    uid() {
-      return this.$store.state.user.id
+    post() {
+      return this.$store.state.travel.postDetail;
     },
   },
   created() {
-    this.getTravelDetail()
+    this.$store.dispatch('travel/getTravelDetail', this.$route.params.id);
   },
-  methods: {
-    getTravelDetail() {
-      firebase
-        .database()
-        .ref('posts/' + this.$route.params.id)
-        .once('value')
-        .then((result) => {
-          if (result.val()) {
-            this.post = result.val()
-            console.dir(this.post)
-          }
-        })
-    },
-  },
-}
+};
 </script>

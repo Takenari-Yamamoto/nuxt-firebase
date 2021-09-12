@@ -34,7 +34,6 @@ export default {
       .then((result) => {
         if (result.val()) {
           this.posts = result.val();
-          this.myPosts = this.posts.filter((value) => value.uid === this.uid);
         }
       });
   },

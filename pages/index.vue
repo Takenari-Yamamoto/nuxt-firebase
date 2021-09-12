@@ -3,7 +3,7 @@
     <h1 class="title">Travel List</h1>
     <div class="list">
       <TravelPost
-        v-for="post in posts"
+        v-for="post in allPosts"
         :key="post.postId"
         :title="post.title"
         :content="post.content"
@@ -16,33 +16,19 @@
 </template>
 
 <script>
-import firebase from '~/plugins/firebase';
 import TravelPost from '@/components/Atoms/TravelPost';
 
 export default {
   components: {
     TravelPost,
   },
-  data() {
-    return {
-      posts: [],
-    };
+  computed: {
+    allPosts() {
+      return this.$store.state.travel.allPosts;
+    },
   },
   created() {
-    this.getAllTravelPosts();
-  },
-  methods: {
-    getAllTravelPosts() {
-      firebase
-        .database()
-        .ref('/posts')
-        .once('value')
-        .then((result) => {
-          if (result.val()) {
-            this.posts = result.val();
-          }
-        });
-    },
+    this.$store.dispatch('travel/getAllTravelPosts');
   },
 };
 </script>

@@ -3,7 +3,7 @@
     <img class="image" src="@/assets/image/test.jpeg" alt="travel" />
     <p class="title">{{ title }}</p>
     <p class="text">{{ content }}</p>
-    <p class="uid">{{ uid }}</p>
+    <p class="uid">User ID: {{ uid }}</p>
   </div>
 </template>
 
@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     moveToDetail(id) {
-      this.$router.push('/travel/' + id)
+      this.$router.push('/travel/' + id);
     },
   },
-}
+};
 </script>

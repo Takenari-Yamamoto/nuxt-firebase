@@ -1,23 +1,27 @@
-import firebase from '~/plugins/firebase'
+import firebase from '~/plugins/firebase';
 
 export const state = {
-  title: '',
-  content: '',
+  // いらんかも？
+  // title: '',
+  // content: '',
+  // post: '',
   allPosts: {},
-  personalPosts: {},
-  post: '',
-}
+  postDetail: {},
+};
 
 export const mutations = {
-  // setPost(state, { title, content }) {
-  //   ;(state.title = title), (state.content = content)
-  // },
-}
+  setAllTravelPosts(state, allPosts) {
+    state.allPosts = allPosts;
+  },
+  setTravelDetail(state, post) {
+    state.postDetail = post;
+  },
+};
 
 export const actions = {
   // 投稿する
   post({ context, state }, { title, content, uid, postId }) {
-    const id = firebase.database().ref().child('posts').push().key
+    const id = firebase.database().ref().child('posts').push().key;
     firebase
       .database()
       .ref('posts/' + id)
@@ -26,7 +30,7 @@ export const actions = {
         title,
         uid,
         postId: id,
-      })
+      });
   },
   // 投稿詳細を編集する
   editTravelDetail({ context, state }, { title, content, postId }) {
@@ -36,6 +40,34 @@ export const actions = {
       .update({
         content,
         title,
-      })
+      });
   },
-}
+  // 全てのユーザーの全ての投稿を取得
+  getAllTravelPosts(context) {
+    firebase
+      .database()
+      .ref('/posts')
+      .once('value')
+      .then((result) => {
+        console.log(result.val());
+        if (result.val()) {
+          // 変数に入れないとエラーになる
+          const allPosts = result.val();
+          context.commit('setAllTravelPosts', allPosts);
+        }
+      });
+  },
+  // 投稿詳細を取得
+  getTravelDetail(context, params) {
+    firebase
+      .database()
+      .ref('posts/' + params)
+      .once('value')
+      .then((result) => {
+        if (result.val()) {
+          const post = result.val();
+          context.commit('setTravelDetail', post);
+        }
+      });
+  },
+};
