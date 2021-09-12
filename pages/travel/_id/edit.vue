@@ -1,10 +1,9 @@
 <template>
-  <div class="main">
-    <h1>Edit page desu</h1>
-    {{ uid }}
-    <label for="title">Title</label>
+  <div class="edit-travel">
+    <h1>編集ページ</h1>
+    <p class="id">Post id {{ post.postId }}</p>
+    <p class="uid">User id: {{ post.uid }}</p>
     <input v-model="post.title" type="text" name="title" />
-    <label for="title">Content</label>
     <textarea v-model="post.content" class="mb-2" type="text" name="content" />
     <button
       class="btn -blue"
@@ -16,7 +15,7 @@
         })
       "
     >
-      編集
+      更新
     </button>
   </div>
 </template>
