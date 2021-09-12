@@ -49,7 +49,6 @@ export const actions = {
       .ref('/posts')
       .once('value')
       .then((result) => {
-        console.log(result.val());
         if (result.val()) {
           // 変数に入れないとエラーになる
           const allPosts = result.val();
