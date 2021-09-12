@@ -1,7 +1,7 @@
 <template>
-  <div class="after-login">
+  <div class="user-information">
     <template v-if="$store.state.user.isLoggedIn">
-      <h2>あなたのユーザー情報</h2>
+      <h2 class="title">あなたのユーザー情報</h2>
       <InformationList class="item" :title="`Email`" :information="email" />
       <InformationList class="item" :title="`ID`" :information="id" />
       <InformationList class="item" :title="`Name`" :information="name" />

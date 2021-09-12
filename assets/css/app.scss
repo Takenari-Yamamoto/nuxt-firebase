@@ -16,14 +16,17 @@
 /* pages */
 @import 'pages/index-page';
 @import 'pages/login-page';
+@import 'pages/my-page';
 
 /* components > atoms */
 @import 'assets/css/components/atoms/btn-component';
 @import 'assets/css/components/atoms/travel-post';
+@import 'assets/css/components/atoms/information-list';
 
 /* components > organisms */
 @import 'assets/css/components/organisms/the-app-header';
 @import 'assets/css/components/organisms/login-form';
+@import 'assets/css/components/organisms/user-information';
 
 /* components > molecules */
 

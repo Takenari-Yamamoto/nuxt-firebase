@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="mypage">
-      <h1>MY PAGE です</h1>
-      <button @click="status = true">User information</button>
-      <button @click="status = false">Post List</button>
+    <div class="my-page">
+      <h1 class="title">MY PAGE です</h1>
+      <button class="btn -white" @click="status = true">
+        User information
+      </button>
+      <button class="btn -white" @click="status = false">Post List</button>
       <template v-if="status">
-        <TheUserInfomation />
+        <UserInformation />
       </template>
       <template v-else>
         <UserPostList />
@@ -15,23 +17,23 @@
 </template>
 
 <script>
-import TheUserInfomation from '@/components/Templates/TheUserInfomation'
-import UserPostList from '@/components/Templates/UserPostList'
+import UserInformation from '@/components/Templates/UserInformation';
+import UserPostList from '@/components/Templates/UserPostList';
 
 export default {
   components: {
-    TheUserInfomation,
+    UserInformation,
     UserPostList,
   },
   data() {
     return {
       status: true,
-    }
+    };
   },
   computed: {
     uid() {
-      return this.$store.state.user.id
+      return this.$store.state.user.id;
     },
   },
-}
+};
 </script>
