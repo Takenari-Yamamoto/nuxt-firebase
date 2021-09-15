@@ -22,13 +22,11 @@ export default {
   components: {
     TravelPost,
   },
-  computed: {
-    allPosts() {
-      return this.$store.state.travel.allPosts;
-    },
-  },
-  created() {
-    this.$store.dispatch('travel/getAllTravelPosts');
+  async asyncData() {
+    const allPosts = await fetch(
+      'https://nuxt-firebase-acb48-default-rtdb.firebaseio.com/posts.json',
+    ).then((res) => res.json());
+    return { allPosts };
   },
 };
 </script>

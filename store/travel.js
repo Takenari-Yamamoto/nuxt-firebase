@@ -1,10 +1,6 @@
 import firebase from '~/plugins/firebase';
 
 export const state = {
-  // いらんかも？
-  // title: '',
-  // content: '',
-  // post: '',
   allPosts: {},
   postDetail: {},
 };
@@ -44,6 +40,7 @@ export const actions = {
   },
   // 全てのユーザーの全ての投稿を取得
   getAllTravelPosts(context) {
+    console.log('get travels');
     firebase
       .database()
       .ref('/posts')
